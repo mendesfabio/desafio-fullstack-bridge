@@ -6,6 +6,7 @@ import api from './services/api';
 
 function App() {
   const [hist, setHist] = useState([]);
+  const [error, setError] = useState('');
   const [number, setNumber] = useState('');
   const [factorial, setFactorial] = useState('');
 
@@ -16,22 +17,27 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    api.get(`/factorial?number=${number}`).then(({ data }) => {
-      setFactorial(data.factorial);
-      setHist((hist) => [
-        ...hist,
-        {
-          number: number,
-          factorial: data.factorial,
-        },
-      ]);
-    });
+
+    api
+      .get(`/factorial?number=${number}`)
+      .then(({ data }) => {
+        setError('');
+        setFactorial(data.factorial);
+        setHist((hist) => [
+          ...hist,
+          {
+            number: number,
+            factorial: data.factorial,
+          },
+        ]);
+      })
+      .catch(setError('Insira um número natural e positivo.'));
   };
 
   return (
     <div className="App">
       <header>
-        <h1 class="logo">
+        <h1 className="logo">
           fatorial<span>!</span>
         </h1>
       </header>
@@ -43,6 +49,7 @@ function App() {
             value={number}
             onChange={(e) => setNumber(e.target.value)}
             required
+            error={error}
           />
         </Cell>
         <Cell>
@@ -69,10 +76,10 @@ function App() {
       </Grid>
 
       <h2>Histórico</h2>
-      <div class="history-wrap">
+      <div className="history-wrap">
         {hist
-          ? hist.map(({ number, factorial }) => (
-              <div class="history-box">
+          ? hist.map(({ number, factorial }, idx) => (
+              <div className="history-box" key={idx}>
                 <Cell>
                   <Paper
                     elevation={10}
