@@ -12,13 +12,13 @@ Foi utilizado Java e Spring Boot para desenvolvimento do backend. O Maven també
 
 O backend poderá ser acessado em http://localhost:8080.
 
-### Requisição à API
+### Exemplo de requisição à API
 
 ```
 GET /factorial?number=3
 ```
 
-### Resposta da API
+### Exemplo de resposta da API
 
 ```
 {
@@ -36,7 +36,7 @@ Foi utilizado o React para implementação da interface de usuário. Algumas bib
 Para rodar o cliente, acesse a pasta `frontend` e execute os seguintes comandos:
 
 ```
-yarn
+yarn install
 yarn start
 ```
 
