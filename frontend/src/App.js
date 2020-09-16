@@ -17,7 +17,6 @@ function App() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-
     api
       .get(`/factorial?number=${number}`)
       .then(({ data }) => {
@@ -31,7 +30,7 @@ function App() {
         ]);
         setError('');
       })
-      .catch(setError('Insira um número natural e positivo.'));
+      .catch((error) => setError('Insira um número natural.'));
   };
 
   return (
