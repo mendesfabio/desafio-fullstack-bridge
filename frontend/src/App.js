@@ -21,7 +21,6 @@ function App() {
     api
       .get(`/factorial?number=${number}`)
       .then(({ data }) => {
-        setError('');
         setFactorial(data.factorial);
         setHist((hist) => [
           ...hist,
@@ -30,6 +29,7 @@ function App() {
             factorial: data.factorial,
           },
         ]);
+        setError('');
       })
       .catch(setError('Insira um número natural e positivo.'));
   };
@@ -43,7 +43,7 @@ function App() {
       </header>
 
       <Grid direction="row" gap={2} justifyContent="center" wrap>
-        <Cell>
+        <Cell sm={3}>
           <TextField
             label="Número"
             value={number}
@@ -52,7 +52,7 @@ function App() {
             error={error}
           />
         </Cell>
-        <Cell>
+        <Cell sm={3}>
           <TextField
             label="Fatorial"
             name="empty"
@@ -62,14 +62,14 @@ function App() {
         </Cell>
       </Grid>
       <Grid direction="row" gap={2} justifyContent="center" wrap>
-        <Cell>
-          <Button skin="outline" onClick={handleReset}>
+        <Cell sm={3}>
+          <Button skin="outline" onClick={handleReset} block>
             Resetar
           </Button>
         </Cell>
 
-        <Cell>
-          <Button kind="primary" onClick={handleSubmit}>
+        <Cell sm={3}>
+          <Button kind="primary" onClick={handleSubmit} block>
             Calcular
           </Button>
         </Cell>
