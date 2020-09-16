@@ -12,6 +12,9 @@ public class FactorialController {
 	@CrossOrigin(origins = "*")
 	@GetMapping("/factorial")
 	public Factorial factorial(@RequestParam(value = "number") int n) {
+		if(n < 0) {
+			throw new RuntimeException();
+		}
 		return new Factorial(n);
 	}
 }
