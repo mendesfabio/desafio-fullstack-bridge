@@ -35,39 +35,39 @@ function App() {
           fatorial<span>!</span>
         </h1>
       </header>
-      <form onSubmit={handleSubmit}>
-        <Grid direction="row" gap={2} justifyContent="center" wrap>
-          <Cell>
-            <TextField
-              label="Número"
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-              required
-            />
-          </Cell>
-          <Cell>
-            <TextField
-              label="Fatorial"
-              name="empty"
-              disabled={true}
-              value={factorial}
-            />
-          </Cell>
-        </Grid>
-        <Grid direction="row" gap={2} justifyContent="center" wrap>
-          <Cell>
-            <Button skin="outline" onClick={handleReset}>
-              Resetar
-            </Button>
-          </Cell>
 
-          <Cell>
-            <Button type="submit" kind="primary">
-              Calcular
-            </Button>
-          </Cell>
-        </Grid>
-      </form>
+      <Grid direction="row" gap={2} justifyContent="center" wrap>
+        <Cell>
+          <TextField
+            label="Número"
+            value={number}
+            onChange={(e) => setNumber(e.target.value)}
+            required
+          />
+        </Cell>
+        <Cell>
+          <TextField
+            label="Fatorial"
+            name="empty"
+            disabled={true}
+            value={factorial}
+          />
+        </Cell>
+      </Grid>
+      <Grid direction="row" gap={2} justifyContent="center" wrap>
+        <Cell>
+          <Button skin="outline" onClick={handleReset}>
+            Resetar
+          </Button>
+        </Cell>
+
+        <Cell>
+          <Button kind="primary" onClick={handleSubmit}>
+            Calcular
+          </Button>
+        </Cell>
+      </Grid>
+
       <h2>Histórico</h2>
       <div class="history-wrap">
         {hist
